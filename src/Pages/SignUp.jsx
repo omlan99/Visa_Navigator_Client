@@ -141,10 +141,10 @@ const SignUp = () => {
               </button>
             </div>
           </form>
-          <div classNameName="my-4">
+          <div className="my-4">
             <button
               onClick={handleGoogle}
-              classNameName="btn  bg-white border-gray-500 text-xl font-medium w-full"
+              className="btn  bg-white border-gray-500 text-xl font-medium w-full"
             >
               <FcGoogle /> Google
             </button>
