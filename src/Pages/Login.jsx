@@ -40,10 +40,7 @@ const Login = () => {
         });
       });
   };
-  const handleForget = () => {
-    const email = emailRef.current?.value;
-    navigate('/forgetPassword', {state : {email}})
-  }
+
   return (
     <div>
       <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
@@ -84,15 +81,7 @@ const Login = () => {
                 >
                   Password
                 </label>
-                <div class="text-sm">
-                  <button
-
-                   onClick={handleForget}
-                    class="font-semibold text-indigo-600 hover:text-indigo-500"
-                  >
-                    Forgot password?
-                  </button>
-                </div>  
+              
               </div>
               <div class="mt-2">
                 <input
