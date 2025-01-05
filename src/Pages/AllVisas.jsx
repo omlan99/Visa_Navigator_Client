@@ -1,8 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../Context/AuthProvider";
 
 const AllVisas = () => {
   const [allVisa, setAllVisa] = useState([]);
+  const {user} = useContext(AuthContext)
+  const navigate = useNavigate();
+
   useEffect(() => {
     fetch("http://localhost:5000/")
       .then((res) => res.json())
@@ -11,6 +15,10 @@ const AllVisas = () => {
       });
   }, []);
   console.log(allVisa);
+  const handleClick = (data)=>{
+    user ? navigate(`/allvisa/${data}`) : navigate('/login')
+    
+   }
   return (
     <div>
       <h1 className="text-5xl text-center py-6 font-bold">All Visa</h1>
@@ -32,7 +40,7 @@ const AllVisas = () => {
               <p><span className="font-semibold">Proceessing Time</span> : {visa.processing_time}</p>
               <p><span className="font-semibold">Validity</span> : {visa.validity}</p>
               <div className="card-actions mx-auto my-2">
-                <Link to={'/details'} className="btn btn-primary btn-wide">See Details</Link >
+                <button onClick={() =>handleClick(visa.id)} className="btn btn-primary btn-wide">See Details</button >
               </div>
             </div>
           </div>

@@ -5,6 +5,7 @@ import SignUp from "../Pages/SignUp";
 import MainLayout from "../Layout/MainLayout";
 import Home from "../Pages/Home";
 import AllVisas from "../Pages/AllVisas";
+import VisaDetails from "../Pages/VisaDetails";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
         path: "/allvisa",
         element: <AllVisas></AllVisas>,
       },
+      {
+        path : '/allvisa/:id',
+        element : <VisaDetails></VisaDetails>
+      }
     ],
   },
 ]);

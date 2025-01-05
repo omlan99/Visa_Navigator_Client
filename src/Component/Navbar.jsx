@@ -16,7 +16,7 @@ const links = (
 const Navbar = () => {
   const navigate = useNavigate();
   const handleClick = () => {
-    navigate("/login", { replace: true, state: null });
+    navigate("/login");
   };
   const { user, signOutUser } = useContext(AuthContext);
 
