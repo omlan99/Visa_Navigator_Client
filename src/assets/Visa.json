@@ -1,0 +1,193 @@
+[
+    {
+      "id": 1,
+      "country_image": "https://example.com/images/usa.jpg",
+      "country_name": "United States",
+      "visa_type": "Tourist Visa",
+      "processing_time": "5-10 business days",
+      "required_documents": [
+        "Valid passport",
+        "Visa application form",
+        "Recent passport-sized photograph",
+        "Proof of financial support",
+        "Travel itinerary"
+      ],
+      "description": "A visa for tourists visiting the United States for leisure or recreational purposes.",
+      "age_restriction": 18,
+      "fee": 160,
+      "validity": "6 months",
+      "application_method": "Online submission"
+    },
+    {
+      "id": 2,
+      "country_image": "https://example.com/images/canada.jpg",
+      "country_name": "Canada",
+      "visa_type": "Student Visa",
+      "processing_time": "4-6 weeks",
+      "required_documents": [
+        "Valid passport",
+        "Acceptance letter from educational institution",
+        "Visa application form",
+        "Proof of financial support",
+        "Medical examination report"
+      ],
+      "description": "A visa for students enrolled in full-time educational programs in Canada.",
+      "age_restriction": 16,
+      "fee": 150,
+      "validity": "Duration of the study program",
+      "application_method": "Apply through visa application center"
+    },
+    {
+      "id": 3,
+      "country_image": "https://example.com/images/japan.jpg",
+      "country_name": "Japan",
+      "visa_type": "Work Visa",
+      "processing_time": "1-3 months",
+      "required_documents": [
+        "Valid passport",
+        "Visa application form",
+        "Employment certificate",
+        "Recent passport-sized photograph",
+        "Proof of qualification"
+      ],
+      "description": "A visa for individuals employed in Japan for a specific job.",
+      "age_restriction": 21,
+      "fee": 200,
+      "validity": "1 year",
+      "application_method": "Submission through Japanese embassy"
+    },
+    {
+      "id": 4,
+      "country_image": "https://example.com/images/uk.jpg",
+      "country_name": "United Kingdom",
+      "visa_type": "Tourist Visa",
+      "processing_time": "2-4 weeks",
+      "required_documents": [
+        "Valid passport",
+        "Visa application form",
+        "Recent passport-sized photograph",
+        "Travel itinerary",
+        "Accommodation details"
+      ],
+      "description": "A visa for tourists planning to visit the UK for leisure and sightseeing.",
+      "age_restriction": 18,
+      "fee": 130,
+      "validity": "6 months",
+      "application_method": "Online application"
+    },
+    {
+      "id": 5,
+      "country_image": "https://example.com/images/australia.jpg",
+      "country_name": "Australia",
+      "visa_type": "Working Holiday Visa",
+      "processing_time": "15-30 days",
+      "required_documents": [
+        "Valid passport",
+        "Visa application form",
+        "Proof of funds",
+        "Health insurance",
+        "Travel itinerary"
+      ],
+      "description": "A visa allowing young people to work and travel in Australia for up to a year.",
+      "age_restriction": 18,
+      "fee": 485,
+      "validity": "1 year",
+      "application_method": "Online submission"
+    },
+    {
+      "id": 6,
+      "country_image": "https://example.com/images/france.jpg",
+      "country_name": "France",
+      "visa_type": "Business Visa",
+      "processing_time": "7-15 business days",
+      "required_documents": [
+        "Valid passport",
+        "Visa application form",
+        "Invitation letter from host company",
+        "Proof of financial support",
+        "Travel insurance"
+      ],
+      "description": "A visa for individuals traveling to France for business purposes.",
+      "age_restriction": 21,
+      "fee": 120,
+      "validity": "90 days",
+      "application_method": "Through visa application center"
+    },
+    {
+      "id": 7,
+      "country_image": "https://example.com/images/india.jpg",
+      "country_name": "India",
+      "visa_type": "Medical Visa",
+      "processing_time": "5-10 business days",
+      "required_documents": [
+        "Valid passport",
+        "Visa application form",
+        "Medical diagnosis from home country",
+        "Letter from recognized medical facility in India",
+        "Recent passport-sized photograph"
+      ],
+      "description": "A visa for individuals traveling to India for medical treatment.",
+      "age_restriction": 18,
+      "fee": 75,
+      "validity": "6 months",
+      "application_method": "Online submission"
+    },
+    {
+      "id": 8,
+      "country_image": "https://example.com/images/thailand.jpg",
+      "country_name": "Thailand",
+      "visa_type": "Tourist Visa",
+      "processing_time": "3-7 business days",
+      "required_documents": [
+        "Valid passport",
+        "Visa application form",
+        "Proof of onward travel",
+        "Accommodation details",
+        "Travel insurance"
+      ],
+      "description": "A visa for tourists visiting Thailand for leisure and recreational purposes.",
+      "age_restriction": 18,
+      "fee": 40,
+      "validity": "60 days",
+      "application_method": "Through embassy"
+    },
+    {
+      "id": 9,
+      "country_image": "https://example.com/images/germany.jpg",
+      "country_name": "Germany",
+      "visa_type": "Student Visa",
+      "processing_time": "4-8 weeks",
+      "required_documents": [
+        "Valid passport",
+        "Visa application form",
+        "University acceptance letter",
+        "Proof of financial resources",
+        "Health insurance"
+      ],
+      "description": "A visa for students planning to pursue higher education in Germany.",
+      "age_restriction": 18,
+      "fee": 75,
+      "validity": "Duration of study program",
+      "application_method": "Through visa application center"
+    },
+    {
+      "id": 10,
+      "country_image": "https://example.com/images/brazil.jpg",
+      "country_name": "Brazil",
+      "visa_type": "Tourist Visa",
+      "processing_time": "10-15 business days",
+      "required_documents": [
+        "Valid passport",
+        "Visa application form",
+        "Recent passport-sized photograph",
+        "Proof of financial resources",
+        "Travel itinerary"
+      ],
+      "description": "A visa for tourists visiting Brazil for sightseeing and leisure.",
+      "age_restriction": 18,
+      "fee": 50,
+      "validity": "90 days",
+      "application_method": "Through consulate"
+    }
+  ]
+  
