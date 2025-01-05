@@ -9,7 +9,7 @@ const links = (
       <Link>Home</Link>
     </li>
     <li>
-      <Link>All Visas</Link>
+      <Link to={'/allvisa'}>All Visas</Link>
     </li>
   </>
 );
