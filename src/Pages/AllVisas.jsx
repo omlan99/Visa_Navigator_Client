@@ -29,7 +29,7 @@ const AllVisas = () => {
             <figure className="px-10 pt-10 ">
               <img
                 src={visa.country_image}
-                alt="Shoes"
+                alt="country Flag"
                 className="rounded-xl"
               />
             </figure>
