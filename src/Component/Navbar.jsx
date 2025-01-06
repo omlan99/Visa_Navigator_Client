@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Links, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Context/AuthProvider";
 import { Tooltip } from "react-tooltip";
 
@@ -9,7 +9,7 @@ const links = (
       <Link>Home</Link>
     </li>
     <li>
-      <Link to={'/allvisa'}>All Visas</Link>
+      <Link to={"/allvisa"}>All Visas</Link>
     </li>
   </>
 );
@@ -49,7 +49,7 @@ const Navbar = () => {
               <li>
                 {user && (
                   <li>
-                    <Link>Add Visa</Link>
+                    <Link to={"/addvisa"}>Add Visa</Link>
                   </li>
                 )}
                 {user && (
@@ -75,7 +75,7 @@ const Navbar = () => {
 
             {user && (
               <li>
-                <Link>Add Visa</Link>
+                <Link to={'/addvisa'}>Add Visa</Link>
               </li>
             )}
             {user && (
@@ -94,7 +94,7 @@ const Navbar = () => {
           {user ? (
             <>
               {/* {" "} */}
-              <Tooltip  id="my-tooltip"></Tooltip>
+              <Tooltip id="my-tooltip"></Tooltip>
               <div
                 className="avatar"
                 data-tooltip-id="my-tooltip"
@@ -116,7 +116,7 @@ const Navbar = () => {
                   Login
                 </button>
               </Link>
-               <Link to={"signup"}>
+              <Link to={"signup"}>
                 <button className="btn" onClick={handleClick}>
                   Register
                 </button>

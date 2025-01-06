@@ -6,6 +6,7 @@ import MainLayout from "../Layout/MainLayout";
 import Home from "../Pages/Home";
 import AllVisas from "../Pages/AllVisas";
 import VisaDetails from "../Pages/VisaDetails";
+import AddVisa from "../Pages/AddVisa";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
       {
         path : '/allvisa/:id',
         element : <VisaDetails></VisaDetails>
+      },
+      {
+        path : '/addvisa',
+        element : <AddVisa></AddVisa>
       }
     ],
   },
