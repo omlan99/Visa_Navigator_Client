@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Context/AuthProvider";
+import axios from "axios";
 
 const AllVisas = () => {
   const [allVisa, setAllVisa] = useState([]);
@@ -8,11 +9,9 @@ const AllVisas = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:5000/")
-      .then((res) => res.json())
-      .then((data) => {
-        setAllVisa(data);
-      });
+    axios.get('http://localhost:5000/')
+    .then(res=> setAllVisa(res.data))
+   
   }, []);
   console.log(allVisa);
   const handleClick = (data)=>{
