@@ -2,6 +2,7 @@ import axios from "axios";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { FaChevronDown } from "react-icons/fa6";
+import Swal from "sweetalert2";
 
 const AddVisa = () => {
   const {
@@ -12,7 +13,11 @@ const AddVisa = () => {
   } = useForm();
   const onSubmit = async (data) => {
     try{
-      const response = await axios.post('http://localhost:5000', data);
+      const response = await axios.post('http://localhost:5000/addedVisa', data);
+      Swal.fire({
+        title: "Visa Added SuccesFully",
+        icon: "success"
+      });
       console.log(data);
       reset()
     }
