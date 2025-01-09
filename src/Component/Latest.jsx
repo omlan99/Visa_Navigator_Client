@@ -58,7 +58,7 @@ const Latest = () => {
               </p>
               <div className="card-actions mx-auto my-2">
                 <button
-                  onClick={() => handleClick(visa.id)}
+                  onClick={() => handleClick(visa._id)}
                   className="btn btn-primary btn-wide"
                 >
                   See Details

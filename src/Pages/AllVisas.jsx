@@ -9,8 +9,10 @@ const AllVisas = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get('http://localhost:5000/')
-    .then(res=> setAllVisa(res.data))
+    axios.get('http://localhost:5000' )
+    .then(res=>{
+      console.log(res.data) 
+      setAllVisa(res.data)})
    
   }, []);
   console.log(allVisa);
@@ -18,11 +20,28 @@ const AllVisas = () => {
     user ? navigate(`/allvisa/${data}`) : navigate('/login')
     
    }
+   const handleFilter = (value) =>{
+    console.log('button Clicked')
+    console.log(value.target.value)
+   }
   return (
     <div>
       <h1 className="text-5xl text-center py-6 font-bold">All Visa</h1>
-
-      <div className="grid grid-cols-4 gap-5 py-24">
+      <div>
+   
+<details className="dropdown ">
+  <summary className="btn m-1">Filter By</summary>
+  <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
+    <li><a  onClick={(e) =>handleFilter(e)}>Tourist Visa</a></li>
+    <li><a  onClick={(e) =>handleFilter(e)}>Student Visa</a></li>
+    <li><a  onClick={(e) =>handleFilter(e)}>Work Visa</a></li>
+    <li><a  onClick={(e) =>handleFilter(e)}>Business Visa</a></li>
+    <li><a  onClick={(e) =>handleFilter(e)}>Medical Visa</a></li>
+    <li><a  onClick={(e) =>handleFilter(e)}> Working Holidy Visa</a></li>
+  </ul>
+</details>
+      </div>
+      <div className="grid grid-cols-4 gap-5 py-5">
         {allVisa.map((visa) => (
           <div className="card bg-base-100  shadow-xl border ">
             <figure className="px-10 pt-10 ">
