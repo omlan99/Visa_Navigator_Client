@@ -1,7 +1,7 @@
 import axios from "axios";
 import React from "react";
 import { useForm } from "react-hook-form";
-import { FaChevronDown } from "react-icons/fa6";
+  import { FaChevronDown } from "react-icons/fa6";
 import Swal from "sweetalert2";
 
 const AddVisa = () => {
@@ -14,11 +14,11 @@ const AddVisa = () => {
   const onSubmit = async (data) => {
     try{
       const response = await axios.post('http://localhost:5000/addedVisa', data);
+      console.log(data);
       Swal.fire({
-        title: "Visa Added SuccesFully",
+        title: "Visa Added Succesfully",
         icon: "success"
       });
-      console.log(data);
       reset()
     }
     catch(error){

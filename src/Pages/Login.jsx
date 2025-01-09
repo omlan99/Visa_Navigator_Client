@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { toast } from "react-toastify";
 import { AuthContext } from "../Context/AuthProvider";
+import axios from "axios";
 const Login = () => {
   const location = useLocation();
   console.log(location)
@@ -28,10 +29,13 @@ const Login = () => {
     signInUser(email, password)
       .then((result) => {
         console.log(result.user);
+        const user = {email : result.user.email};
+        axios.post('http://localhost:5000/jwt', user,{withCredentials:  true})
+        .then(res => console.log(res.data))
         toast.success("Login Successfull", {
           position: "top-center",
         })
-        navigate("/", { replace: true, state: null });
+        navigate("/");
       })
       .catch((error) => {
         // console.log(error.message);

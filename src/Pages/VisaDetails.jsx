@@ -13,7 +13,7 @@ const VisaDetails = () => {
       .then((res) => res.json())
       .then((data) => setAllVisa(data));
   }, []);
-  const foundVisa = allVisa.find((visa) => visa.id == Number(id));
+  const foundVisa = allVisa.find((visa) => visa._id == id);
   console.log(foundVisa);
 
   const handleClick = () =>{

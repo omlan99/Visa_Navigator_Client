@@ -36,6 +36,10 @@ const AuthProvider = ({children}) => {
         const unsubscribe = onAuthStateChanged(auth, (loggedUser) => {
           console.log("User logged in ", loggedUser);
           setUser(loggedUser);
+          // if(loggedUser?.email) {
+          //   const user = {email : loggedUser.email}
+          //   axios.post(``)
+          // }
         });
         return () => {
           unsubscribe();

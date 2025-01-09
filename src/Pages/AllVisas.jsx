@@ -39,7 +39,7 @@ const AllVisas = () => {
               <p><span className="font-semibold">Proceessing Time</span> : {visa.processing_time}</p>
               <p><span className="font-semibold">Validity</span> : {visa.validity}</p>
               <div className="card-actions mx-auto my-2">
-                <button onClick={() =>handleClick(visa.id)} className="btn btn-primary btn-wide">See Details</button >
+                <button onClick={() =>handleClick(visa._id)} className="btn btn-primary btn-wide">See Details</button >
               </div>
             </div>
           </div>
