@@ -1,10 +1,12 @@
 import axios from "axios";
-import React from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
   import { FaChevronDown } from "react-icons/fa6";
 import Swal from "sweetalert2";
+import { AuthContext } from "../Context/AuthProvider";
 
 const AddVisa = () => {
+  const {user} = useContext(AuthContext)
   const {
     register,
     handleSubmit,
@@ -12,9 +14,11 @@ const AddVisa = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = async (data) => {
+    const AllData = {...data, email : user.email}
+    console.log(AllData)
     try{
-      const response = await axios.post('http://localhost:5000/addedVisa', data);
-      console.log(data);
+      const response = await axios.post('http://localhost:5000/addedVisa', AllData);
+      console.log(AllData);
       Swal.fire({
         title: "Visa Added Succesfully",
         icon: "success"
