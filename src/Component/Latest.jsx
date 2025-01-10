@@ -7,7 +7,7 @@ const Latest = () => {
     const navigate = useNavigate()
   const [allVisa, setAllVisa] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/?limit=6")
+    fetch("http://localhost:3000/?limit=6")
       .then((res) => res.json())
       .then((data) => {
 

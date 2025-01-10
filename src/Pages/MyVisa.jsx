@@ -1,15 +1,22 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../Context/AuthProvider';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 const MyVisa = () => {
     const {user} = useContext(AuthContext)
     const [myVisa, setMyVisa] = useState([])
     useEffect(() => {
-        axios.get(`http://localhost:5000/myVisa?email=${user.email}`)
+        axios.get(`http://localhost:3000/myVisa?email=${user?.email}`)
         .then(res => setMyVisa(res.data))
     },[])
-    console.log(myVisa)
+    console.log(user)
+    const handleDelete = (id) => {
+        axios.delete(`http://localhost:3000/delete/${id}`)
+        .then(res => setMyVisa(myVisa.filter(visa => visa._id !== id)))
+        toast('Visa Deleted successfully')
+        
+    }
     return (
         <div>
             <div className="grid grid-cols-4 gap-5 py-5">
@@ -31,7 +38,7 @@ const MyVisa = () => {
               <p><span className="font-semibold">Validity</span> : {visa.validity}</p>
               <div className="card-actions mx-auto my-2 flex">
                 <button onClick={() =>handleClick(visa._id)} className="btn btn-primary btn-wide">Updatae</button >
-                <button onClick={() =>handleClick(visa._id)} className="btn btn-primary btn-wide">Delete</button >
+                <button onClick={() =>handleDelete(visa._id)} className="btn btn-primary btn-wide">Delete</button >
               </div>
             </div>
           </div>

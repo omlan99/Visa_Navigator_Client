@@ -9,7 +9,7 @@ const AllVisas = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get('http://localhost:5000' )
+    axios.get('http://localhost:3000' )
     .then(res=>{
       console.log(res.data) 
       setAllVisa(res.data)})

@@ -9,7 +9,7 @@ const VisaDetails = () => {
   console.log(typeof id);
 
   useEffect(() => {
-    fetch("http://localhost:5000/")
+    fetch("http://localhost:3000/")
       .then((res) => res.json())
       .then((data) => setAllVisa(data));
   }, []);
