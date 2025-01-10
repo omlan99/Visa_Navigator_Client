@@ -7,6 +7,7 @@ import Home from "../Pages/Home";
 import AllVisas from "../Pages/AllVisas";
 import VisaDetails from "../Pages/VisaDetails";
 import AddVisa from "../Pages/AddVisa";
+import MyVisa from "../Pages/MyVisa";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
       {
         path : '/addvisa',
         element : <AddVisa></AddVisa>
+      },
+      {
+        path : '/myVisa',
+        element : <MyVisa></MyVisa>
       }
     ],
   },

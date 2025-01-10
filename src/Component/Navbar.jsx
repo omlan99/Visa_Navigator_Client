@@ -80,7 +80,7 @@ const Navbar = () => {
             )}
             {user && (
               <li>
-                <Link>My added visas</Link>
+                <Link to={'/myVisa'}>My added visas</Link>
               </li>
             )}
             {user && (
