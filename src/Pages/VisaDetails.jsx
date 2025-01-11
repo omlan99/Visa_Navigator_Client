@@ -24,10 +24,10 @@ const VisaDetails = () => {
     return <div>Visa is loading</div>;
   }
   return (
-    <div className="grid grid-cols-2 gap-5">
-      <div><img src={foundVisa.country_image} alt="" /></div>
+    <div className="">
+      <div className="flex justify-center"><img src={foundVisa.country_image} alt="" /></div>
 
-      <div>
+      <div className="space-y-4   ">
       <div className="py-2"><p><span className="font-medium ">Country :</span> {foundVisa.country_name}</p></div>
       <div className="py-2"><p><span className="font-medium ">Description :</span> {foundVisa.description}</p></div>
       <div className="py-2"><p><span className="font-medium ">Fees :</span> {foundVisa.fee}</p></div>

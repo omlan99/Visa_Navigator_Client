@@ -64,10 +64,25 @@ const MyVisa = () => {
   // console.log(selectedVisa)
   
   const onSubmit = (data) => {  
-      console.log(data)
-      axios.patch(`http://localhost:3000/update/${visaId}`,data)
-      .then(res => console.log(res.data))
-      document.getElementById("my_modal_3").close();
+    Swal.fire({
+      title: "Do you want to save the changes?",
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: "Save",
+      denyButtonText: `Don't save`
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        Swal.fire("Saved!", "", "success");
+        console.log(data)
+        axios.patch(`http://localhost:3000/update/${visaId}`,data)
+        .then(res => console.log(res.data))
+        document.getElementById("my_modal_3").close();
+      } else if (result.isDenied) {
+        Swal.fire("Changes are not saved", "", "info");
+      }
+    });
+
 
   };
   return (
