@@ -10,7 +10,7 @@ import { data } from "react-router-dom";
 const MyVisa = () => {
   const { user } = useContext(AuthContext);
   const [myVisa, setMyVisa] = useState([]);
-  const [selectedVisa, setSelectedVisa] = useState([])
+  const [selectedVisa, setSelectedVisa] = useState({})
   const [visaId, setVisaId] = useState([])
 
   const {
@@ -61,12 +61,12 @@ const MyVisa = () => {
 
   //   } ,[visaId])
   // }
-  console.log(selectedVisa)
+  // console.log(selectedVisa)
   
   const onSubmit = (data) => {  
       console.log(data)
-      // axios.patch(`http://localhost:3000/update/${visaId}`,data)
-      // .then(res => console.log(res.data))
+      axios.patch(`http://localhost:3000/update/${visaId}`,data)
+      .then(res => console.log(res.data))
       document.getElementById("my_modal_3").close();
 
   };
@@ -470,7 +470,7 @@ const MyVisa = () => {
                 </div>
               </fieldset>
               <div className="flex justify-center py-12">
-                <button className="btn btn-wide btn-primary " type="submit">
+                <button className="btn btn-wide btn-primary ">
                   update Visa
                 </button>
               </div>
