@@ -1,20 +1,20 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { AuthContext } from "../Context/AuthProvider";
+import axios from "axios";
 
 const VisaDetails = () => {
   const {user} =useContext(AuthContext)
-  const [allVisa, setAllVisa] = useState([]);
+  const [foundVisa, setFoundVisa] = useState([]);
+
   const { id } = useParams();
   console.log(typeof id);
 
-  useEffect(() => {
-    fetch("http://localhost:3000/")
-      .then((res) => res.json())
-      .then((data) => setAllVisa(data));
-  }, []);
-  const foundVisa = allVisa.find((visa) => visa._id == id);
-  console.log(foundVisa);
+
+  useEffect(()=> {
+    axios.get(`http://localhost:3000/visa/${id}`)
+    .then(res => {setFoundVisa(res.data)})
+  } ,[])
 
   const handleClick = () =>{
     document.getElementById('my_modal_3').showModal()
@@ -37,7 +37,7 @@ const VisaDetails = () => {
       <div className="py-2"><p><span className="font-medium ">Age Restriction</span> : {foundVisa.age_restriction}</p></div>
       <div className="py-2"><p><span className="font-medium ">Application Method</span> : {foundVisa.application_method}</p></div>
       <div className="py-2"><p><span className="font-medium ">Requirred Documents</span> : {foundVisa.
-required_documents.map(document =><span>{document}, </span> )}</p></div>
+required_documents?.map(document =><span>{document}, </span> )}</p></div>
 
       <button onClick={handleClick} className="btn w-full btn-primary">Apply for visa</button>
         </div>
