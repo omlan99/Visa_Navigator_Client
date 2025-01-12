@@ -51,10 +51,13 @@ const MyVisa = () => {
   const handleUpdate = (id) => {
 
     setVisaId(id)
- 
+    console.log(id)
     document.getElementById("my_modal_3").showModal();
     axios.get(`http://localhost:3000/visa/${visaId}`)
-    .then(res => {setSelectedVisa(res.data)})
+    .then(res => {setSelectedVisa(res.data)
+     console.log(res.data)
+     reset(res.data)
+    })
   };
   // if(visaId){
   //   useEffect(()=> {
@@ -63,25 +66,13 @@ const MyVisa = () => {
   // }
   // console.log(selectedVisa)
   
-  const onSubmit = (data) => {  
-    Swal.fire({
-      title: "Do you want to save the changes?",
-      showDenyButton: true,
-      showCancelButton: true,
-      confirmButtonText: "Save",
-      denyButtonText: `Don't save`
-    }).then((result) => {
-      /* Read more about isConfirmed, isDenied below */
-      if (result.isConfirmed) {
-        Swal.fire("Saved!", "", "success");
-        console.log(data)
-        axios.patch(`http://localhost:3000/update/${visaId}`,data)
-        .then(res => console.log(res.data))
-        document.getElementById("my_modal_3").close();
-      } else if (result.isDenied) {
-        Swal.fire("Changes are not saved", "", "info");
-      }
-    });
+  const onSubmit = (data) => { 
+    document.getElementById("my_modal_3").close();
+    const { _id, ...updateData } = data;
+    console.log(data)
+    axios.patch(`http://localhost:3000/update/${visaId}`,updateData)
+    .then(res => console.log(res.data)) 
+
 
 
   };
@@ -157,7 +148,7 @@ const MyVisa = () => {
                     </label>
                     <div className="mt-2">
                       <input
-                        defaultValue={selectedVisa.country_name}
+                        // defaultValue={selectedVisa.country_name}
                         id="country-name"
                         {...register("country_name", {
                           required: "Country Name is required",
@@ -178,7 +169,7 @@ const MyVisa = () => {
                     </label>
                     <div className="mt-2">
                       <input
-                        defaultValue={selectedVisa.country_image}
+                        // defaultValue={selectedVisa.country_image}
                         id="country_img"
                         {...register("country_image", {
                           required: "Image URL is required",
@@ -199,7 +190,7 @@ const MyVisa = () => {
                     <div className="mt-2 grid grid-cols-1">
                       <select
                         id="visaType"
-                        defaultValue={selectedVisa?.visa_type}
+                        // defaultValue={selectedVisa?.visa_type}
                         {...register("visa_type", {
                           required: "Visa Type is required",
                         })}
@@ -232,7 +223,7 @@ const MyVisa = () => {
                     <div className="mt-2">
                       <input
                         id="age"
-                        defaultValue={selectedVisa.age_restriction}
+                        // defaultValue={selectedVisa.age_restriction}
                         {...register("age_restriction", {
                           required: "age restriction is required",
                         })}
@@ -253,7 +244,7 @@ const MyVisa = () => {
                     <div className="mt-2">
                       <input
                         id="processTime"
-                        defaultValue={selectedVisa.processing_time}
+                        // defaultValue={selectedVisa.processing_time}
                         {...register("processing_time", {
                           required: "Processing Time is required",
                         })}
@@ -274,7 +265,7 @@ const MyVisa = () => {
                     <div className="mt-2">
                       <input
                         id="fee"
-                        defaultValue={selectedVisa.fee}
+                        // defaultValue={selectedVisa.fee}
                         {...register("fee", { required: true })}
                         type="number"
                         autoComplete="address-level1"
@@ -293,7 +284,7 @@ const MyVisa = () => {
                     <div className="mt-2">
                       <input
                         id="validity"
-                        defaultValue={selectedVisa.validity}
+                        // defaultValue={selectedVisa.validity}
                         {...register("validity", { required: true })}
                         type="text"
                         autoComplete="postal-code"
@@ -312,7 +303,7 @@ const MyVisa = () => {
                     <div className="mt-2">
                       <textarea
                         id="about"
-                        defaultValue ={selectedVisa?.description || ""}
+                        // defaultValue ={selectedVisa?.description || ""}
                         {...register("description")}
                         rows={3}
                         className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
@@ -331,7 +322,7 @@ const MyVisa = () => {
                     <div className="mt-2">
                       <input
                         id="applicationMethod"
-                        defaultValue={selectedVisa.application_method}
+                        // defaultValue={selectedVisa.application_method}
                         {...register("application_method")}
                         type="text"
                         autoComplete="street-address"

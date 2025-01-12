@@ -21,8 +21,9 @@ const AllVisas = () => {
     
    }
    const handleFilter = (value) =>{
-    console.log('button Clicked')
-    console.log(value.target.value)
+    console.log(value)
+    axios.get(`http://localhost:3000/?type=${value}` )
+    .then(res => {res.data})
    }
   return (
     <div>
@@ -32,12 +33,12 @@ const AllVisas = () => {
 <details className="dropdown ">
   <summary className="btn m-1">Filter By</summary>
   <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
-    <li><a  onClick={(e) =>handleFilter(e)}>Tourist Visa</a></li>
-    <li><a  onClick={(e) =>handleFilter(e)}>Student Visa</a></li>
-    <li><a  onClick={(e) =>handleFilter(e)}>Work Visa</a></li>
-    <li><a  onClick={(e) =>handleFilter(e)}>Business Visa</a></li>
-    <li><a  onClick={(e) =>handleFilter(e)}>Medical Visa</a></li>
-    <li><a  onClick={(e) =>handleFilter(e)}> Working Holidy Visa</a></li>
+    <li><a  onClick={() =>handleFilter('Tourist Visa')}>Tourist Visa</a></li>
+    <li><a  onClick={() =>handleFilter('Student Visa')}>Student Visa</a></li>
+    <li><a  onClick={() =>handleFilter('Work Visa')}>Work Visa</a></li>
+    <li><a  onClick={() =>handleFilter('Business Visa')}>Business Visa</a></li>
+    <li><a  onClick={() =>handleFilter('Medical Visa')}>Medical Visa</a></li>
+    <li><a  onClick={() =>handleFilter('Working Holidy Visa')}> Working Holidy Visa</a></li>
   </ul>
 </details>
       </div>
