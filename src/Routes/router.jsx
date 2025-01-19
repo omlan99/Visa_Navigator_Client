@@ -8,6 +8,7 @@ import AllVisas from "../Pages/AllVisas";
 import VisaDetails from "../Pages/VisaDetails";
 import AddVisa from "../Pages/AddVisa";
 import MyVisa from "../Pages/MyVisa";
+import VisaApplication from "../Pages/VisaApplication";
 
 const router = createBrowserRouter([
   {
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
       {
         path : '/myVisa',
         element : <MyVisa></MyVisa>
+      },
+      {
+        path : "myapplication",
+        element: <VisaApplication></VisaApplication>
       }
     ],
   },

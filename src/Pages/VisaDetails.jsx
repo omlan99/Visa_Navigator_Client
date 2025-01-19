@@ -2,13 +2,16 @@ import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { AuthContext } from "../Context/AuthProvider";
 import axios from "axios";
+import { useForm } from "react-hook-form";
 
 const VisaDetails = () => {
   const {user} =useContext(AuthContext)
   const [foundVisa, setFoundVisa] = useState([]);
-
+  console.log(user)
   const { id } = useParams();
-  console.log(typeof id);
+
+  const {register} = useForm()
+
 
 
   useEffect(()=> {
@@ -25,7 +28,7 @@ const VisaDetails = () => {
   }
   return (
     <div className="">
-      <div className="flex justify-center"><img src={foundVisa.country_image} alt="" /></div>
+      <div className="flex justify-center my-5"><img src={foundVisa.country_image} alt="" /></div>
 
       <div className="space-y-4   ">
       <div className="py-2"><p><span className="font-medium ">Country :</span> {foundVisa.country_name}</p></div>
@@ -79,6 +82,7 @@ required_documents?.map(document =><span>{document}, </span> )}</p></div>
               <div className="mt-2">
                 <input
                   id="last-name"
+                  {...register('lastName', {required : 'last name required'})}
                   name="last-name"
                   type="text"
                   autoComplete="family-name"

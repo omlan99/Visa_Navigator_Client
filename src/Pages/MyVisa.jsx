@@ -48,23 +48,16 @@ const MyVisa = () => {
       }
     });
   };
-  const handleUpdate = (id) => {
+  const handleUpdate = (id) =>  {
 
     setVisaId(id)
-    console.log(id)
     document.getElementById("my_modal_3").showModal();
-    axios.get(`http://localhost:3000/visa/${visaId}`)
+    axios.get(`http://localhost:3000/visa/${id}`)
     .then(res => {setSelectedVisa(res.data)
      console.log(res.data)
      reset(res.data)
     })
   };
-  // if(visaId){
-  //   useEffect(()=> {
-
-  //   } ,[visaId])
-  // }
-  // console.log(selectedVisa)
   
   const onSubmit = (data) => { 
     document.getElementById("my_modal_3").close();
@@ -78,9 +71,9 @@ const MyVisa = () => {
   };
   return (
     <div>
-      <div className="grid grid-cols-4 gap-5 py-5">
+      <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-5 py-5">
         {myVisa.map((visa) => (
-          <div className="card bg-base-100  shadow-xl border ">
+          <div className="card bg-base-100  shadow-xl border " key={visa._id}>
             <figure className="px-10 pt-10 ">
               <img
                 src={visa.country_image}
