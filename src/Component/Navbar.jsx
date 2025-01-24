@@ -89,6 +89,7 @@ const Navbar = () => {
 
           </ul>
         </div>
+        
         <div className="navbar-end space-x-4">
           {user ? (
             <>

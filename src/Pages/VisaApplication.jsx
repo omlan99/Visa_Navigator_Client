@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Context/AuthProvider";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const VisaApplication = () => {
   const { user } = useContext(AuthContext);
@@ -12,7 +13,8 @@ const VisaApplication = () => {
 
     setLoading(true)
     axios
-      .get(`http://localhost:3000/application?email=${email}`)
+      // .get(`http://localhost:3000/application?email=${email}`)
+      .get(`https://visa-navigator-server-drab.vercel.app/application?email=${email}`)
       .then((res) => {
         setApplications(res.data);
         
@@ -20,6 +22,29 @@ const VisaApplication = () => {
       .catch((err) => console.error("Error fetching applications:", err));
       setLoading(false)
   }, [email]);
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure to delete your application?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: "Deleted!",
+          text: "Your application has been deleted.",
+          icon: "success",
+        });
+        axios
+          // .delete(`http://localhost:3000/application/${id}`)
+          .delete(`https://visa-navigator-server-drab.vercel.app/application/${id}`)
+          .then((res) => setApplications(applications.filter((visa) => visa._id !== id)));
+      }
+    });
+  };
 
   return (
     <div className="m-4">
@@ -71,7 +96,7 @@ const VisaApplication = () => {
                 </p>
   
                 <div className="card-actions mx-auto my-2">
-                  <button className="btn btn-primary btn-wide">Cancel</button>
+                  <button onClick={() => handleDelete(application._id)} className="btn btn-primary btn-wide">Cancel</button>
                 </div>
               </div>
             </div>

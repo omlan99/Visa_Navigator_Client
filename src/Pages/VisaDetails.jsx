@@ -17,7 +17,8 @@ const VisaDetails = () => {
 
 
   useEffect(()=> {
-    axios.get(`http://localhost:3000/visa/${id}`)
+    // axios.get(`http://localhost:3000/visa/${id}`)
+    axios.get(`https://visa-navigator-server-drab.vercel.app/visa/${id}`)
     .then(res => {
 
       setFoundVisa(res.data)
@@ -46,7 +47,8 @@ const VisaDetails = () => {
     date : data.applied_date,
     ...foundVisaWithoutId
   }
-  axios.post(`http://localhost:3000/application`, postingData)
+  // axios.post(`http://localhost:3000/application`, postingData)
+  axios.post(`https://visa-navigator-server-drab.vercel.app/application`, postingData)
   .then(res => {
     document.getElementById('my_modal_3').close()
     console.log(res.data)

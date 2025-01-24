@@ -17,7 +17,8 @@ const AddVisa = () => {
     const AllData = {...data, email : user.email}
     console.log(AllData)
     try{
-      const response = await axios.post('http://localhost:3000/addedVisa', AllData);
+      // const response = await axios.post('http://localhost:3000/addedVisa', AllData);
+      const response = await axios.post('https://visa-navigator-server-drab.vercel.app/addedVisa', AllData);
       console.log(AllData);
       Swal.fire({
         title: "Visa Added Succesfully",

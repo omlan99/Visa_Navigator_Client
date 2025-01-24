@@ -22,13 +22,14 @@ const MyVisa = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/myVisa?email=${user?.email}`)
+      // .get(`http://localhost:3000/myVisa?email=${user?.email}`)
+      .get(`https://visa-navigator-server-drab.vercel.app/myVisa?email=${user?.email}`)
       .then((res) => setMyVisa(res.data));
   }, []);
 
   const handleDelete = (id) => {
     Swal.fire({
-      title: "Are you sure?",
+      title: "Are you sure to delete tje visa?",
       text: "You won't be able to revert this!",
       icon: "warning",
       showCancelButton: true,
@@ -39,11 +40,12 @@ const MyVisa = () => {
       if (result.isConfirmed) {
         Swal.fire({
           title: "Deleted!",
-          text: "Your file has been deleted.",
+          text: "Your visa has been deleted.",
           icon: "success",
         });
         axios
-          .delete(`http://localhost:3000/delete/${id}`)
+          // .delete(`http://localhost:3000/delete/${id}`)
+          .delete(`https://visa-navigator-server-drab.vercel.app/delete/${id}`)
           .then((res) => setMyVisa(myVisa.filter((visa) => visa._id !== id)));
       }
     });
@@ -52,7 +54,8 @@ const MyVisa = () => {
 
     setVisaId(id)
     document.getElementById("my_modal_3").showModal();
-    axios.get(`http://localhost:3000/visa/${id}`)
+    // axios.get(`http://localhost:3000/visa/${id}`)
+    axios.get(`https://visa-navigator-server-drab.vercel.app/visa/${id}`)
     .then(res => {setSelectedVisa(res.data)
      console.log(res.data)
      reset(res.data)
@@ -63,7 +66,8 @@ const MyVisa = () => {
     document.getElementById("my_modal_3").close();
     const { _id, ...updateData } = data;
     console.log(data)
-    axios.patch(`http://localhost:3000/update/${visaId}`,updateData)
+    // axios.patch(`http://localhost:3000/update/${visaId}`,updateData)
+    axios.patch(`https://visa-navigator-server-drab.vercel.app/update/${visaId}`,updateData)
     .then(res => console.log(res.data)) 
 
 

@@ -25,7 +25,8 @@ const AllVisas = () => {
     const value =e.target.value
     console.log(value)
 
-    axios.get(`http://localhost:3000/type?type=${value}` )
+    // axios.get(`http://localhost:3000/type?type=${value}` )
+    axios.get(`https://visa-navigator-server-drab.vercel.app/type?type=${value}` )
     .then(res => {
       console.log(res.data)
       setAllVisa(res.data)
