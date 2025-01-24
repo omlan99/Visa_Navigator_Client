@@ -3,10 +3,11 @@ import { useParams } from "react-router-dom";
 import { AuthContext } from "../Context/AuthProvider";
 import axios from "axios";
 import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 
 const VisaDetails = () => {
   const {user} =useContext(AuthContext)
-  console.log(user)
+  
   const [foundVisa, setFoundVisa] = useState([]);
   const { id } = useParams();
   const { register, handleSubmit, watch, formState: { errors },reset } = useForm({
@@ -42,12 +43,20 @@ const VisaDetails = () => {
     email : data.email,
     firstName: data.firstName,
     lastName : data.lastName,
-    date : data.date,
+    date : data.applied_date,
     ...foundVisaWithoutId
   }
   axios.post(`http://localhost:3000/application`, postingData)
   .then(res => {
+    document.getElementById('my_modal_3').close()
     console.log(res.data)
+    Swal.fire({
+      position: "center",
+      icon: "success",
+      title: "Your application is successful",
+      showConfirmButton: false,
+      timer: 1500
+    });
 
   })
   console.log(postingData)
@@ -146,10 +155,9 @@ required_documents?.map(document =><span>{document}, </span> )}</p></div>
               <div className="mt-2">
                 <input
                   id="date"
-                  {...register("date", { required: true })} 
+                  {...register("applied_date", { required: true })} 
                   type="date"
 
-                  readOnly
                   className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                 />
               </div>

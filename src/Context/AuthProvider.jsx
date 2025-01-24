@@ -27,16 +27,15 @@ const AuthProvider = ({children}) => {
       useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (loggedUser) => {
           console.log("User logged in ", loggedUser);
-          setUser(loggedUser);
+          setUser(loggedUser || null);
           setLoader(false)
           // if(loggedUser?.email) {
           //   const user = {email : loggedUser.email}
           //   axios.post(``)
           // }
         });
-        return () => {
-         return unsubscribe();
-        };
+        return () =>  unsubscribe();
+        
       }, []);
       const updateUser= (updateData) =>{
         setLoader(true)

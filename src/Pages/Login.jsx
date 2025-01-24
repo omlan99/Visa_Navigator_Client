@@ -8,8 +8,8 @@ import Swal from "sweetalert2";
 const Login = () => {
   const location = useLocation();
  
-  const { signInUser, googleSignIn, loader} = useContext(AuthContext);
-  console.log(loader)
+  const { signInUser, googleSignIn} = useContext(AuthContext);
+
   const navigate = useNavigate();
   const {register, handleSubmit, formState: {errors}} = useForm()
   const handleGoogle = async () => {

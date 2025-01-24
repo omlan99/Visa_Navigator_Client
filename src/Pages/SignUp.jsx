@@ -44,30 +44,30 @@ const SignUp = () => {
  
   return (
     <div>
-      <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
-        <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+      <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+        <div className="sm:mx-auto sm:w-full sm:max-w-sm">
        
-          <h2 class="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">
+          <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">
             Create a new account
           </h2>
         </div>
 
-        <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form class="space-y-6" onSubmit={handleSubmit(onSubmit)}>
+        <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+          <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
             <div>
               <label
                 for="email"
-                class="block text-sm/6 font-medium text-gray-900 text-left"
+                className="block text-sm/6 font-medium text-gray-900 text-left"
               >
                 User Name
               </label>
-              <div class="mt-2">
+              <div className="mt-2">
                 <input
                   type="text"
                   name="name"
                   {...register('name', {required: true})}
                 
-                  class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                  className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                 />
                 {errors.name?.type === "required" && (
                   <p className="text-red-600">Please Enter Your Name </p>
@@ -78,16 +78,16 @@ const SignUp = () => {
             <div>
               <label
                 for="email"
-                class="block text-sm/6 font-medium text-gray-900 text-left"
+                className="block text-sm/6 font-medium text-gray-900 text-left"
               >
                 Upload a profile Photo
               </label>
-              <div class="mt-2">
+              <div className="mt-2">
                 <input
                   type="url"
                   name="photo"
                   {...register("photo", {required : true})}
-                  class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                  className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                 />
                 {errors.photo?.type === "required" && (
                   <p className="text-red-600">Please Enter URL of Your Photo</p>
@@ -98,11 +98,11 @@ const SignUp = () => {
             <div>
               <label
                 for="email"
-                class="block text-sm/6 font-medium text-gray-900 text-left"
+                className="block text-sm/6 font-medium text-gray-900 text-left"
               >
                 Email address
               </label>
-              <div class="mt-2">
+              <div className="mt-2">
                 <input
                   type="email"
                   name="email"
@@ -110,7 +110,7 @@ const SignUp = () => {
                   id="email"
                   autocomplete="email"
                   
-                  class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                  className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                 />
                 {errors.email?.type === "required" && (
                   <p className="text-red-600">Please Enter a Email</p>
@@ -119,15 +119,15 @@ const SignUp = () => {
             </div>
 
             <div>
-              <div class="flex items-center justify-between">
+              <div className="flex items-center justify-between">
                 <label
                   for="password"
-                  class="block text-sm/6 font-medium text-gray-900"
+                  className="block text-sm/6 font-medium text-gray-900"
                 >
                   Password
                 </label>
               </div>
-              <div class="mt-2 relative">
+              <div className="mt-2 relative">
                 <input
                   type="password"
                   name="password"
@@ -136,7 +136,7 @@ const SignUp = () => {
                   id="password"
                   autocomplete="current-password"
                 
-                  class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                  className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                 />
                  {errors.password?.type === "required" && (
                   <p className="text-red-600">Please Enter a password</p>
@@ -158,7 +158,7 @@ const SignUp = () => {
             <div>
               <button
                
-                class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
                 Register
               </button>
@@ -172,11 +172,11 @@ const SignUp = () => {
               <FcGoogle /> Google
             </button>
           </div>
-          <p class="mt-10 text-center text-sm/6 text-gray-500">
+          <p className="mt-10 text-center text-sm/6 text-gray-500">
             Already have an account.
             <Link
               to={"/login"}
-              class="font-semibold text-indigo-600 hover:text-indigo-500 ml-2"
+              className="font-semibold text-indigo-600 hover:text-indigo-500 ml-2"
             >
               Login Here
             </Link>

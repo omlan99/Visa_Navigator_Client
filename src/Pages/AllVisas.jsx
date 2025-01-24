@@ -12,11 +12,11 @@ const AllVisas = () => {
   useEffect(() => {
       axios.get('http://localhost:3000')
       .then(res=>{
-        console.log(res.data) 
+   
         setAllVisa(res.data)})
    
   }, []);
-  console.log(allVisa);
+
   const handleClick = (data)=>{
     user ? navigate(`/allvisa/${data}`) : navigate('/login')
     

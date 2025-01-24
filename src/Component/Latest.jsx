@@ -14,7 +14,6 @@ const Latest = () => {
         setAllVisa(data)
       });
   }, []);
-  console.log(allVisa);
   const handleClick = (data)=>{
     user ? navigate(`/allvisa/${data}`) : navigate('/login')
     
