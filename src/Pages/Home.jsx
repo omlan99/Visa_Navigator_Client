@@ -2,11 +2,12 @@ import React from 'react';
 import Latest from '../Component/Latest';
 import About from '../Component/About';
 import Newsletter from '../Component/Newsletter';
+import Slider from '../Component/Sllider';
 
 const Home = () => {
     return (
         <div>
-          <p>Home page is connected</p>
+          <Slider></Slider>
           <Latest></Latest>
           <About></About>
           <Newsletter></Newsletter>

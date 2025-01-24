@@ -106,7 +106,7 @@ const MyVisa = () => {
                   onClick={() => handleUpdate(visa._id)}
                   className="btn btn-primary btn-wide"
                 >
-                  Updatae
+                  Update
                 </button>
                 <button
                   onClick={() => handleDelete(visa._id)}

@@ -73,21 +73,20 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1 space-x-3">
             {links}
 
-            {user && (
+            
               <li>
                 <Link to={'/addvisa'}>Add Visa</Link>
               </li>
-            )}
-            {user && (
+
               <li>
                 <Link to={'/myVisa'}>My added visas</Link>
               </li>
-            )}
-            {user && (
-              <li>
-                <Link>My Visa Applications</Link>
+
+ 
+              <li>  
+                <Link to={'/myapplication'}>My Visa Applications</Link>
               </li>
-            )}
+
           </ul>
         </div>
         <div className="navbar-end space-x-4">

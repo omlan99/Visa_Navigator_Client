@@ -22,32 +22,22 @@ const AllVisas = () => {
     
    }
    const handleFilter = (e) =>{
-    console.log(e.target.value)
+    const value =e.target.value
+    console.log(value)
 
-    // axios.get(`http://localhost:3000/type?type=${value}` )
-    // .then(res => {
-    //   console.log(res.data)
-    //   setAllVisa(res.data)
-    // })
+    axios.get(`http://localhost:3000/type?type=${value}` )
+    .then(res => {
+      console.log(res.data)
+      setAllVisa(res.data)
+    })
    }
   return (
     <div>
       <h1 className="text-5xl text-center py-6 font-bold">All Visa</h1>
       <div>
    
-{/* <details className="dropdown ">
-  <summary className="btn m-1">Filter By</summary>
-  <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow" open>
-    <li><a  onClick={() =>handleFilter('Tourist Visa')}>Tourist Visa</a></li>
-    <li><a  onClick={() =>handleFilter('Student Visa')}>Student Visa</a></li>
-    <li><a  onClick={() =>handleFilter('Work Visa')}>Work Visa</a></li>
-    <li><a  onClick={() =>handleFilter('Business Visa')}>Business Visa</a></li>
-    <li><a  onClick={() =>handleFilter('Medical Visa')}>Medical Visa</a></li>
-    <li><a  onClick={() =>handleFilter('Working Holiday Visa')}> Working Holidy Visa</a></li>
-  </ul> 
-</details>*/}
-<select className="select select-bordered w-full max-w-xs" onCLick={handleFilter}>
-    <option disabled selected>Visa Type</option>
+<select className="select select-bordered w-full max-w-xs" onChange={(e) =>handleFilter(e)}>
+    <option disabled >Visa Type</option>
     <option value={"Tourist Visa"}>Tourist Visa </option>
     <option value={"Student Visa"}>Student Visa</option>
     <option value={"Work Visa"}>Work Visa</option>
@@ -58,8 +48,8 @@ const AllVisas = () => {
 
       </div>
       <div className="grid md:grid-cols-3  lg:grid-cols-4 gap-5 py-5">
-        {allVisa.map((visa) => (
-          <div className="card bg-base-100  shadow-xl border ">
+        {allVisa.map((visa,index) => (
+          <div key={index} className="card bg-base-100  shadow-xl border ">
           <figure className="px-10 pt-10 ">
             <img
               src={visa.country_image}

@@ -11,24 +11,16 @@ const AuthProvider = ({children}) => {
     const [loader, setLoader] = useState(true)
 
     const createUser = (email, password) => {
+        setLoader(true)
         return createUserWithEmailAndPassword(auth, email, password);
       };
 
     const signInUser = (email, password) => {
-        return signInWithEmailAndPassword(auth, email, password);
+      setLoader(true)  
+      return signInWithEmailAndPassword(auth, email, password);
     };  
     const googleSignIn = () => {
-        // signInWithRedirect(auth, googleProvider)
-        // getRedirectResult(auth)
-        // .then(result => {
-        //     const caredential = GoogleAuthProvider.credentialFromResult(result);
-        //     const token  = caredential.accessToken
-        //     const user = result.user;
-
-        // })
-        // .catch(error =>{
-        //     const errorMessage = error
-        // })
+      setLoader(true)
         return signInWithPopup(auth, googleProvider);
       };
 
@@ -36,22 +28,26 @@ const AuthProvider = ({children}) => {
         const unsubscribe = onAuthStateChanged(auth, (loggedUser) => {
           console.log("User logged in ", loggedUser);
           setUser(loggedUser);
+          setLoader(false)
           // if(loggedUser?.email) {
           //   const user = {email : loggedUser.email}
           //   axios.post(``)
           // }
         });
         return () => {
-          unsubscribe();
+         return unsubscribe();
         };
       }, []);
       const updateUser= (updateData) =>{
+        setLoader(true)
         return updateProfile(auth.currentUser, updateData)
       }
       const signOutUser = () => {
+        setLoader(true)
         return signOut(auth);
       };
       const resetPassword = (email) =>{
+        setLoader(true)
         return sendPasswordResetEmail(auth, email)
       }
       

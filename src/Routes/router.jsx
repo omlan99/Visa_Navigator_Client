@@ -9,6 +9,7 @@ import VisaDetails from "../Pages/VisaDetails";
 import AddVisa from "../Pages/AddVisa";
 import MyVisa from "../Pages/MyVisa";
 import VisaApplication from "../Pages/VisaApplication";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -34,19 +35,19 @@ const router = createBrowserRouter([
       },
       {
         path : '/allvisa/:id',
-        element : <VisaDetails></VisaDetails>
+        element : <PrivateRoute><VisaDetails></VisaDetails></PrivateRoute>
       },
       {
         path : '/addvisa',
-        element : <AddVisa></AddVisa>
+        element : <PrivateRoute><AddVisa></AddVisa></PrivateRoute>
       },
       {
         path : '/myVisa',
-        element : <MyVisa></MyVisa>
+        element : <PrivateRoute><MyVisa></MyVisa></PrivateRoute>
       },
       {
-        path : "myapplication",
-        element: <VisaApplication></VisaApplication>
+        path : "/myapplication",
+        element: <PrivateRoute><VisaApplication></VisaApplication></PrivateRoute>
       }
     ],
   },

@@ -6,18 +6,27 @@ import { useForm } from "react-hook-form";
 
 const VisaDetails = () => {
   const {user} =useContext(AuthContext)
-  const [foundVisa, setFoundVisa] = useState([]);
   console.log(user)
+  const [foundVisa, setFoundVisa] = useState([]);
   const { id } = useParams();
-
-  const {register} = useForm()
-
+  const { register, handleSubmit, watch, formState: { errors },reset } = useForm({
+  
+  });
+  
 
 
   useEffect(()=> {
     axios.get(`http://localhost:3000/visa/${id}`)
-    .then(res => {setFoundVisa(res.data)})
-  } ,[])
+    .then(res => {
+
+      setFoundVisa(res.data)
+      reset({
+        visaFee: res.data.fee,
+        email: user?.email,
+        applied_date :  new Date().toISOString().split('T')[0]
+      });
+    })
+  } ,[id, reset, setFoundVisa])
 
   const handleClick = () =>{
     document.getElementById('my_modal_3').showModal()
@@ -26,6 +35,25 @@ const VisaDetails = () => {
   if (!foundVisa) {
     return <div>Visa is loading</div>;
   }
+  const {_id , ...foundVisaWithoutId} = foundVisa
+  const onSubmit = data =>{
+  const postingData = {
+
+    email : data.email,
+    firstName: data.firstName,
+    lastName : data.lastName,
+    date : data.date,
+    ...foundVisaWithoutId
+  }
+  axios.post(`http://localhost:3000/application`, postingData)
+  .then(res => {
+    console.log(res.data)
+
+  })
+  console.log(postingData)
+  console.log(foundVisa)
+  }
+  
   return (
     <div className="">
       <div className="flex justify-center my-5"><img src={foundVisa.country_image} alt="" /></div>
@@ -52,7 +80,7 @@ required_documents?.map(document =><span>{document}, </span> )}</p></div>
       {/* if there is a button in form, it will close the modal */}
       <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
     </form>
-    <form>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <div className="space-y-12">
        
 
@@ -66,8 +94,8 @@ required_documents?.map(document =><span>{document}, </span> )}</p></div>
               <div className="mt-2">
                 <input
                   id="first-name"
-                  
-                  name="first-name"
+                  {...register("firstName", { required: true })} 
+               
                   type="text"
                   autoComplete="given-name"
                   className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
@@ -82,8 +110,8 @@ required_documents?.map(document =><span>{document}, </span> )}</p></div>
               <div className="mt-2">
                 <input
                   id="last-name"
-                  {...register('lastName', {required : 'last name required'})}
-                  name="last-name"
+                  {...register('lastName', {required : true})}
+             
                   type="text"
                   autoComplete="family-name"
                   className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
@@ -98,8 +126,8 @@ required_documents?.map(document =><span>{document}, </span> )}</p></div>
               <div className="mt-2">
                 <input
                   id="email"
-                  value={user?.email}
-                  name="email"
+                  readOnly
+                 {...register("email")} 
                   type="email"
                   autoComplete="email"
                   className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
@@ -112,29 +140,31 @@ required_documents?.map(document =><span>{document}, </span> )}</p></div>
        
 
             <div className="sm:col-span-2 sm:col-start-1">
-              <label htmlFor="city" className="block text-sm/6 font-medium text-gray-900">
+              <label htmlFor="date" className="block text-sm/6 font-medium text-gray-900">
                 Applied Date
               </label>
               <div className="mt-2">
                 <input
-                  id="city"
-                  name="city"
+                  id="date"
+                  {...register("date", { required: true })} 
                   type="date"
-                  autoComplete="address-level2"
+
+                  readOnly
                   className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                 />
               </div>
             </div>
 
             <div className="sm:col-span-2">
-              <label htmlFor="region" className="block text-sm/6 font-medium text-gray-900">
+              <label htmlFor="fee" className="block text-sm/6 font-medium text-gray-900">
                 Fee 
               </label>
               <div className="mt-2">
                 <input
-                  id="region"
-                  defaultValue={foundVisa.fee}
-                  name="region"
+                  id="fee"
+                  {...register('visaFee')}
+                  // defaultValue={foundVisa.fee}
+
                   type="number"
                   autoComplete="address-level1"
                   className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
@@ -151,6 +181,7 @@ required_documents?.map(document =><span>{document}, </span> )}</p></div>
         <div className="flex justify-center py-3">
         <button
           type="submit"
+      
           className="rounded-md btn-wide bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
         >
           Apply
