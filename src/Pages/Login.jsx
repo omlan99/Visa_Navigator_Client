@@ -21,10 +21,10 @@ const Login = () => {
     navigate("/");
   };
   const from = location.state?.from?.pathname || "/";
-  console.log(from);
-  console.log(location);
+  // console.log(from);
+  // console.log(location);
   const onSubmit = (data) => {
-    console.log(data);
+    // console.log(data);
     signInUser(data.email, data.password)
       .then((result) => {
         Swal.fire({

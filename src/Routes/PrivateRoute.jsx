@@ -5,7 +5,7 @@ import { Navigate, useLocation } from "react-router-dom";
 const PrivateRoute = ({ children }) => {
   const { user, loader } = useContext(AuthContext);
   const location = useLocation();
-  console.log("Auth state:", { user, loader });
+  // console.log("Auth state:", { user, loader });
   if (loader) {
     return (
       <div className="text-center">

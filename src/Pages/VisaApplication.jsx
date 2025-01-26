@@ -11,7 +11,7 @@ const VisaApplication = () => {
   const [loading, setLoading] = useState(true);
   const handlesSearch = (e) => {
     setSearch(e.target.value);
-    console.log(search);
+    // console.log(search);
   };
   useEffect(() => {
     if (!email) return;

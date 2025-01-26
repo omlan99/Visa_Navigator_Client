@@ -56,7 +56,7 @@ const VisaDetails = () => {
       )
       .then((res) => {
         document.getElementById("my_modal_3").close();
-        console.log(res.data);
+        // console.log(res.data);
         Swal.fire({
           position: "center",
           icon: "success",
@@ -65,8 +65,8 @@ const VisaDetails = () => {
           timer: 1500,
         });
       });
-    console.log(postingData);
-    console.log(foundVisa);
+    // console.log(postingData);
+    // console.log(foundVisa);
   };
 
   return (

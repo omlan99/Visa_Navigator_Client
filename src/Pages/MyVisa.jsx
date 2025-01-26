@@ -60,7 +60,7 @@ const MyVisa = () => {
       .get(`https://visa-navigator-server-drab.vercel.app/visa/${id}`)
       .then((res) => {
         setSelectedVisa(res.data);
-        console.log(res.data);
+        // console.log(res.data);
         reset(res.data);
       });
   };
