@@ -34,21 +34,37 @@ const router = createBrowserRouter([
         element: <AllVisas></AllVisas>,
       },
       {
-        path : '/allvisa/:id',
-        element : <PrivateRoute><VisaDetails></VisaDetails></PrivateRoute>
+        path: "/allvisa/:id",
+        element: (
+          <PrivateRoute>
+            <VisaDetails></VisaDetails>
+          </PrivateRoute>
+        ),
       },
       {
-        path : '/addvisa',
-        element : <PrivateRoute><AddVisa></AddVisa></PrivateRoute>
+        path: "/addvisa",
+        element: (
+          <PrivateRoute>
+            <AddVisa></AddVisa>
+          </PrivateRoute>
+        ),
       },
       {
-        path : '/myVisa',
-        element : <PrivateRoute><MyVisa></MyVisa></PrivateRoute>
+        path: "/myVisa",
+        element: (
+          <PrivateRoute>
+            <MyVisa></MyVisa>
+          </PrivateRoute>
+        ),
       },
       {
-        path : "/myapplication",
-        element: <PrivateRoute><VisaApplication></VisaApplication></PrivateRoute>
-      }
+        path: "/myapplication",
+        element: (
+          <PrivateRoute>
+            <VisaApplication></VisaApplication>
+          </PrivateRoute>
+        ),
+      },
     ],
   },
 ]);

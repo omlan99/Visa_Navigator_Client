@@ -1,12 +1,12 @@
 import axios from "axios";
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
-  import { FaChevronDown } from "react-icons/fa6";
+import { FaChevronDown } from "react-icons/fa6";
 import Swal from "sweetalert2";
 import { AuthContext } from "../Context/AuthProvider";
 
 const AddVisa = () => {
-  const {user} = useContext(AuthContext)
+  const { user } = useContext(AuthContext);
   const {
     register,
     handleSubmit,
@@ -14,22 +14,23 @@ const AddVisa = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = async (data) => {
-    const AllData = {...data, email : user.email}
-    console.log(AllData)
-    try{
+    const AllData = { ...data, email: user.email };
+    console.log(AllData);
+    try {
       // const response = await axios.post('http://localhost:3000/addedVisa', AllData);
-      const response = await axios.post('https://visa-navigator-server-drab.vercel.app/addedVisa', AllData);
+      const response = await axios.post(
+        "https://visa-navigator-server-drab.vercel.app/addedVisa",
+        AllData
+      );
       console.log(AllData);
       Swal.fire({
         title: "Visa Added Succesfully",
-        icon: "success"
+        icon: "success",
       });
-      reset()
+      reset();
+    } catch (error) {
+      console.log("Error submitting form", error.message);
     }
-    catch(error){
-      console.log("Error submitting form",error.message)
-    }
-    
   };
 
   return (
@@ -197,7 +198,7 @@ const AddVisa = () => {
               <div className="mt-2">
                 <textarea
                   id="about"
-                  {...register("description" )}
+                  {...register("description")}
                   rows={3}
                   className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                   defaultValue={""}

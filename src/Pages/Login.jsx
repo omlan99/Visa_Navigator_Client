@@ -7,45 +7,47 @@ import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 const Login = () => {
   const location = useLocation();
- 
-  const { signInUser, googleSignIn} = useContext(AuthContext);
+
+  const { signInUser, googleSignIn } = useContext(AuthContext);
 
   const navigate = useNavigate();
-  const {register, handleSubmit, formState: {errors}} = useForm()
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
   const handleGoogle = async () => {
-   await googleSignIn();
-    navigate('/')
+    await googleSignIn();
+    navigate("/");
   };
   const from = location.state?.from?.pathname || "/";
-   console.log(from)
- console.log(location)
-const onSubmit =(data) =>{
-    console.log(data)
+  console.log(from);
+  console.log(location);
+  const onSubmit = (data) => {
+    console.log(data);
     signInUser(data.email, data.password)
-    .then(result=> {
-     
+      .then((result) => {
         Swal.fire({
           position: "top-end",
           icon: "success",
           title: "Login Successfully",
           showConfirmButton: false,
-          timer: 1500
+          timer: 1500,
         });
-        navigate(from, {replace : true})
-        
-  })
-  .catch(error => {
-    console.log(error.message)
-    toast.error('Email and Password did not matched',{position : "top-center"})
-  })
-  }
-  
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        console.log(error.message);
+        toast.error("Email and Password did not matched", {
+          position: "top-center",
+        });
+      });
+  };
 
   return (
     <div>
       <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-         
           <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">
             Sign in to your account
           </h2>
@@ -62,15 +64,13 @@ const onSubmit =(data) =>{
               </label>
               <div className="mt-2">
                 <input
-              
                   type="email"
-                  {...register("email",{required:true})}
+                  {...register("email", { required: true })}
                   id="email"
                   autocomplete="email"
-                 
                   className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                 />
-                 {errors.email?.type === "required" && (
+                {errors.email?.type === "required" && (
                   <p classNameName="text-red-600">Please Enter a Email</p>
                 )}
               </div>
@@ -87,23 +87,22 @@ const onSubmit =(data) =>{
                 <div className="text-sm">
                   <button
                     type="button"
-                  //  onClick={handleForget}
+                    //  onClick={handleForget}
                     className="font-semibold text-indigo-600 hover:text-indigo-500"
                   >
                     Forgot password?
                   </button>
-                </div>  
+                </div>
               </div>
               <div className="mt-2">
                 <input
                   type="password"
-                  {...register("password",{required: true})}
+                  {...register("password", { required: true })}
                   id="password"
                   autocomplete="current-password"
-                 
                   className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                 />
-                 {errors.password?.type === "required" && (
+                {errors.password?.type === "required" && (
                   <p classNameName="text-red-600">Please Enter a password</p>
                 )}
               </div>

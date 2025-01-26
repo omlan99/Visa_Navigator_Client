@@ -10,8 +10,8 @@ import { data } from "react-router-dom";
 const MyVisa = () => {
   const { user } = useContext(AuthContext);
   const [myVisa, setMyVisa] = useState([]);
-  const [selectedVisa, setSelectedVisa] = useState({})
-  const [visaId, setVisaId] = useState([])
+  const [selectedVisa, setSelectedVisa] = useState({});
+  const [visaId, setVisaId] = useState([]);
 
   const {
     register,
@@ -23,7 +23,9 @@ const MyVisa = () => {
   useEffect(() => {
     axios
       // .get(`http://localhost:3000/myVisa?email=${user?.email}`)
-      .get(`https://visa-navigator-server-drab.vercel.app/myVisa?email=${user?.email}`)
+      .get(
+        `https://visa-navigator-server-drab.vercel.app/myVisa?email=${user?.email}`
+      )
       .then((res) => setMyVisa(res.data));
   }, []);
 
@@ -50,28 +52,30 @@ const MyVisa = () => {
       }
     });
   };
-  const handleUpdate = (id) =>  {
-
-    setVisaId(id)
+  const handleUpdate = (id) => {
+    setVisaId(id);
     document.getElementById("my_modal_3").showModal();
     // axios.get(`http://localhost:3000/visa/${id}`)
-    axios.get(`https://visa-navigator-server-drab.vercel.app/visa/${id}`)
-    .then(res => {setSelectedVisa(res.data)
-     console.log(res.data)
-     reset(res.data)
-    })
+    axios
+      .get(`https://visa-navigator-server-drab.vercel.app/visa/${id}`)
+      .then((res) => {
+        setSelectedVisa(res.data);
+        console.log(res.data);
+        reset(res.data);
+      });
   };
-  
-  const onSubmit = (data) => { 
+
+  const onSubmit = (data) => {
     document.getElementById("my_modal_3").close();
     const { _id, ...updateData } = data;
-    console.log(data)
+    console.log(data);
     // axios.patch(`http://localhost:3000/update/${visaId}`,updateData)
-    axios.patch(`https://visa-navigator-server-drab.vercel.app/update/${visaId}`,updateData)
-    .then(res => console.log(res.data)) 
-
-
-
+    axios
+      .patch(
+        `https://visa-navigator-server-drab.vercel.app/update/${visaId}`,
+        updateData
+      )
+      .then((res) => console.log(res.data));
   };
   return (
     <div>
@@ -304,7 +308,6 @@ const MyVisa = () => {
                         {...register("description")}
                         rows={3}
                         className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                       
                       />
                     </div>
                   </div>

@@ -6,13 +6,13 @@ import Swal from "sweetalert2";
 const VisaApplication = () => {
   const { user } = useContext(AuthContext);
   const [applications, setApplications] = useState([]);
-  const [search, setSearch] = useState('')
+  const [search, setSearch] = useState("");
   const email = user?.email || "";
   const [loading, setLoading] = useState(true);
   const handlesSearch = (e) => {
-    setSearch(e.target.value)
-    console.log(search)
-  }
+    setSearch(e.target.value);
+    console.log(search);
+  };
   useEffect(() => {
     if (!email) return;
 
@@ -56,7 +56,6 @@ const VisaApplication = () => {
     });
   };
 
-
   return (
     <div className="m-4">
       {loading ? (
@@ -71,7 +70,12 @@ const VisaApplication = () => {
           <h3 className="text-xl text-center my-5">My All Applications</h3>
           <div className="my-5">
             <label className="input input-bordered flex items-center gap-2">
-              <input onChange={handlesSearch} type="text" className="grow" placeholder="Search" />
+              <input
+                onChange={handlesSearch}
+                type="text"
+                className="grow"
+                placeholder="Search"
+              />
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 16 16"
