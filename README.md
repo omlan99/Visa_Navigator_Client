@@ -1,6 +1,6 @@
 # Visa Navigator
 
-**Live Website:** [https://visa-navigator-d47f9.web.app/allvisa]
+**Live Website:** [https://visa-navigator-d47f9.web.app]
 ## Project Description
 
 Visa Navigator is a user-friendly portal that simplifies the process of checking visa requirements, applying for visas online, and tracking visa applications. The platform is designed with a dynamic user interface, robust functionality, and seamless user experience.
