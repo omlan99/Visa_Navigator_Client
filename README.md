@@ -1,6 +1,5 @@
 # 🛂 Visa Navigator  
 
-![Visa Navigator Screenshot](screenshot.png)  
 
 ## 🚀 Project Overview  
 **Visa Navigator** is a user-friendly portal that simplifies the process of checking visa requirements, applying for visas online, and tracking visa applications. The platform is designed with a **dynamic user interface, robust functionality, and seamless user experience** to help users navigate visa processes efficiently.  
